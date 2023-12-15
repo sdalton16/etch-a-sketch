@@ -1,0 +1,58 @@
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    color: darkslateblue;
+}
+
+#settings button {
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5%;
+}
+
+#settings input {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#settings p {
+    color: black;
+}
+
+#settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    width: 90%;
+}
+
+
+#gridContainer {
+    display: flex;
+    flex-flow: row wrap;
+    width: 90%;
+    height: 90%
+}
+
+.gridDiv {
+    flex-grow: 1;
+    aspect-ratio: 1/1;
+    border: solid 1px;
+    border-color: black;
+    background-color: white;
+    padding: 0;
+}
+
+.gridDivBlack {
+    flex-grow: 1;
+    aspect-ratio: 1/1;
+    border: solid 2px;
+    border-color: black;
+    background-color: black;
+    padding: 0;
+}
