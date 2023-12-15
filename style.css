@@ -41,7 +41,8 @@ body {
     display: flex;
     flex-direction: column;
     width: 90%;
-    height: 90%
+    height: 90%;
+    border: solid 2px black;
 }
 
 .gridRow {
@@ -51,16 +52,10 @@ body {
 
 .gridDiv {
     flex-grow: 1;
-    border: solid 1px;
-    border-color: black;
     background-color: white;
-    padding: 0;
 }
 
 .gridDivBlack {
     flex-grow: 1;
-    border: solid 2px;
-    border-color: black;
     background-color: black;
-    padding: 0;
 }
