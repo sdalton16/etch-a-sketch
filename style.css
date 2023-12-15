@@ -1,10 +1,16 @@
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 body {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    height: 100vh;
-    width: 100vw;
+    height: 90vh;
+    width: 90vw;
     background-color: antiquewhite;
     font-family: 'Courier New', Courier, monospace;
     color: darkslateblue;
@@ -31,17 +37,20 @@ body {
     width: 90%;
 }
 
-
 #gridContainer {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
     width: 90%;
     height: 90%
 }
 
+.gridRow {
+    display: flex;
+    flex-grow: 1;
+}
+
 .gridDiv {
     flex-grow: 1;
-    aspect-ratio: 1/1;
     border: solid 1px;
     border-color: black;
     background-color: white;
@@ -50,7 +59,6 @@ body {
 
 .gridDivBlack {
     flex-grow: 1;
-    aspect-ratio: 1/1;
     border: solid 2px;
     border-color: black;
     background-color: black;

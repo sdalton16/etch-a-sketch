@@ -6,34 +6,55 @@
 const gridContainer = document.createElement('div');
 const reset = document.querySelector('#reset');
 const makeGrid = document.querySelector('#makeGrid');
-let gridSides = document.querySelector('#sides');
-let gridSize = 16;
-let gridDivs;
 
+let inputSides = document.querySelector('#sides');
+let gridSides = 4;
+
+
+
+// -------- EVENTS --------
+
+
+
+// create initial grid on page load
 document.addEventListener('DOMContentLoaded', () => {
     gridContainer.setAttribute('id', 'gridContainer');
     document.body.appendChild(gridContainer);
-    createGrid(gridSize);
+    createGrid(gridSides);
 });
 
+// remove all coloring
 reset.addEventListener('click', () => {
     resetGrid();
 });
 
+// create new grid based on user input
 makeGrid.addEventListener('click', () => {
     resetGrid();
-    removeGrid(gridSize);
-    gridSize = getSides() ** 2;
-    createGrid(gridSize);
+    removeGrid();
+    gridSides = getSides();
+    createGrid(gridSides);
 });
 
-const createGrid = function (gridSize) {
-    for (let i = 0; i < gridSize; i++) {
-        let gridDiv = document.createElement('div');
-        gridDiv.classList.add('gridDiv');
-        gridContainer.appendChild(gridDiv);
-    }
-    let gridDivs = gridContainer.querySelectorAll('div');
+
+
+// -------- FUNCTIONS --------
+
+
+
+const createGrid = function (gridSides) {
+    for (let i = 0; i < gridSides; i++) {
+        let gridRow = document.createElement('div');
+        gridRow.classList.add('gridRow');
+        gridContainer.appendChild(gridRow);
+
+        for (let i = 0; i < gridSides; i++) {
+            let gridDiv = document.createElement('div');
+            gridDiv.classList.add('gridDiv');
+            gridRow.appendChild(gridDiv);
+        };
+    };
+    let gridDivs = document.querySelectorAll('.gridDiv');
     
     for (let i = 0; i < gridDivs.length; i++) {
         gridDivs[i].addEventListener('mouseover', () => {
@@ -44,16 +65,16 @@ const createGrid = function (gridSize) {
 }
 
 const removeGrid = function () {
-    let gridDivs = gridContainer.querySelectorAll('div');
+    let gridRows = gridContainer.querySelectorAll('.gridRow');
 
-    for (let i = 0; i < gridDivs.length; i++) {
-        console.log(gridDivs[i]);
-        gridContainer.removeChild(gridDivs[i]);
+    for (let i = 0; i < gridRows.length; i++) {
+        gridContainer.removeChild(gridRows[i]);
     }
 };
 
 const resetGrid = function () {
-    let gridDivs = gridContainer.querySelectorAll('div');
+    let gridDivs = document.querySelectorAll('.gridDivBlack');
+    console.log(gridDivs);
 
     for (let i = 0; i < gridDivs.length; i++) {
         gridDivs[i].className = '';
@@ -62,9 +83,9 @@ const resetGrid = function () {
 };
 
 const getSides = function () {
-    if (gridSides.value > 64) {
+    if (inputSides.value > 64) {
         alert('Max = 64');
-        gridSides.value =  64;
+        inputSides.value =  64;
     };
-    return gridSides.value;
+    return inputSides.value;
 }
