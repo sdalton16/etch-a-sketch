@@ -13,7 +13,7 @@ body {
     width: 90vw;
     background-color: antiquewhite;
     font-family: 'Courier New', Courier, monospace;
-    color: darkslateblue;
+    color: #483d8b;
 }
 
 #settings button {
@@ -21,12 +21,29 @@ body {
     border-radius: 5%;
 }
 
-#settings input {
-    font-family: 'Courier New', Courier, monospace;
+#sliderValue {
+    margin: 0;
 }
+
+#sides {
+    -webkit-appearance: none;
+    height: 8px;
+    appearance: none;
+    margin-top: 5px;
+}
+
+#sides::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #483d8b;
+    cursor: pointer;
+  }
 
 #settings p {
     color: black;
+    text-align: center;
 }
 
 #settings {
@@ -35,6 +52,7 @@ body {
     justify-content: center;
     gap: 2%;
     width: 90%;
+    margin: 10px 0px;
 }
 
 #gridContainer {

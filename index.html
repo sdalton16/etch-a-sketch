@@ -11,7 +11,10 @@
     <h1>Etch-a-Sketch</h1>
     <div id="settings">
         <p>Grid Side Length:</p>
-        <input autofocus type="number" name="sides" id="sides" placeholder="Max size 64">
+        <div id="slider">
+            <p id="sliderValue">16 x 16</p>
+            <input type="range" min="2" max="64" value="16" name="sides" id="sides">
+        </div>
         <button type="submit" id="makeGrid">Make grid</button>
         <p>|</p>
         <button type="submit" id="reset">Reset Grid</button>

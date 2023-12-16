@@ -1,11 +1,7 @@
-// unable to get gridDivs to have correct height to allow for squares vs. just columns
-// likely can use aspect ratio to ensure height and width are the same
-// but this require setting a height or width and unsure how to do so if number of
-// grids is set dynamically
-
 const gridContainer = document.createElement('div');
 const reset = document.querySelector('#reset');
 const makeGrid = document.querySelector('#makeGrid');
+const inputValue = document.querySelector('#sliderValue');
 
 let inputSides = document.querySelector('#sides');
 let gridSides = 4;
@@ -35,6 +31,10 @@ makeGrid.addEventListener('click', () => {
     gridSides = getSides();
     createGrid(gridSides);
 });
+
+inputSides.oninput = () => {
+    sliderValue.textContent = `${inputSides.value} x ${inputSides.value}`;
+}
 
 
 
@@ -83,9 +83,5 @@ const resetGrid = function () {
 };
 
 const getSides = function () {
-    if (inputSides.value > 64) {
-        alert('Max = 64');
-        inputSides.value =  64;
-    };
     return inputSides.value;
 }
