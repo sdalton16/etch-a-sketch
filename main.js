@@ -1,10 +1,15 @@
+// -------- VARIABLES --------
+
+
+
 const gridContainer = document.createElement('div');
 const reset = document.querySelector('#reset');
 const makeGrid = document.querySelector('#makeGrid');
 const inputValue = document.querySelector('#sliderValue');
 
+let isMouseDown = false;
 let inputSides = document.querySelector('#sides');
-let gridSides = 4;
+let gridSides = 16;
 
 
 
@@ -12,19 +17,16 @@ let gridSides = 4;
 
 
 
-// create initial grid on page load
 document.addEventListener('DOMContentLoaded', () => {
     gridContainer.setAttribute('id', 'gridContainer');
     document.body.appendChild(gridContainer);
     createGrid(gridSides);
 });
 
-// remove all coloring
 reset.addEventListener('click', () => {
     resetGrid();
 });
 
-// create new grid based on user input
 makeGrid.addEventListener('click', () => {
     resetGrid();
     removeGrid();
@@ -35,7 +37,6 @@ makeGrid.addEventListener('click', () => {
 inputSides.oninput = () => {
     sliderValue.textContent = `${inputSides.value} x ${inputSides.value}`;
 }
-
 
 
 // -------- FUNCTIONS --------
@@ -54,27 +55,31 @@ const createGrid = function (gridSides) {
             gridRow.appendChild(gridDiv);
         };
     };
+
     let gridDivs = document.querySelectorAll('.gridDiv');
+    console.log(gridDivs);
     
     for (let i = 0; i < gridDivs.length; i++) {
-        gridDivs[i].addEventListener('mouseover', () => {
-            gridDivs[i].className = '';
-            gridDivs[i].classList.add('gridDivBlack');
+        console.log(gridDivs)
+        gridDivs[i].addEventListener('mouseenter', () => {
+            if (isMouseDown) {
+                gridDivs[i].className = '';
+                gridDivs[i].classList.add('gridDivBlack')
+            }
         });
     };
-}
+};
 
 const removeGrid = function () {
     let gridRows = gridContainer.querySelectorAll('.gridRow');
 
     for (let i = 0; i < gridRows.length; i++) {
         gridContainer.removeChild(gridRows[i]);
-    }
+    };
 };
 
 const resetGrid = function () {
     let gridDivs = document.querySelectorAll('.gridDivBlack');
-    console.log(gridDivs);
 
     for (let i = 0; i < gridDivs.length; i++) {
         gridDivs[i].className = '';
@@ -84,4 +89,17 @@ const resetGrid = function () {
 
 const getSides = function () {
     return inputSides.value;
-}
+};
+
+const handleMouseDown = function () {
+    console.log('down'); 
+    isMouseDown = true;
+};
+
+const handleMouseUp = function () {
+    console.log('up');
+    isMouseDown = false;
+};
+
+window.addEventListener('mousedown', handleMouseDown);
+window.addEventListener('mouseup', handleMouseUp);
